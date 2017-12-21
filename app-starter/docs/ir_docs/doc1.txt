@@ -1,0 +1,7 @@
+Pune university situated in the heart of the town.
+String inpt= "newsman_D abduction_D murder_D <!>newsman_D kidnap_D murder_D <!>reporter_D abduction_D murder_D <!>reporter_D kidnap_D murder_D <!>newsperson_D abduction_D murder_D <!>newsperson_D kidnap_D murder_D <!>";
+		inpt="godhra rapid_D train_D attack_D <!>godhra cloud_D train_D attack_D <!>godhra speedy_D train_D attack_D <!>godhra fast_D train_D attack_D <!>";
+		inpt="rare_D space_D creation_D <!>rare_D space_D constitution_D <!>rare_D space_D event_D <!>rare_D space_D creative activity_D <!>rare_D space_D organic law_D <!>rare_D space_D incident_D <!>rare_D cosmic_D creation_D <!>rare_D cosmic_D constitution_D <!>rare_D cosmic_D event_D <!>rare_D cosmic_D creative activity_D <!>rare_D cosmic_D organic law_D <!>rare_D cosmic_D incident_D <!>";
+		inpt="newsman_D abduction_D murder <!>newsman_D kidnap_D murder_D <!>reporter_D abduction_D murder_D <!>reporter_D kidnap_D murder_D <!>newsperson_D abduction_D murder_D <!>newsperson_D kidnap_D murder_D <!>journalist_D abduction_D murder_D <!>journalist_D kidnap_D murder_D <!>";
+		inpt="unlawful_D tree_D break_D <!>unlawful_D tree_D tweak_D <!>unlawful_D tree_D cut_D <!>unlawful_D tree_D pluck_D <!>illegal_D tree_D break_D <!>illegal_D tree_D tweak_D <!>illegal_D tree_D cut_D <!>illegal_D tree_D pluck_D <!>";
+		
