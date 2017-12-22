@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ashish</groupId>
-	<artifactId>app-starter</artifactId>
+	<artifactId>app-starter-docker-image-builder</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -15,7 +15,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
+		<remote.repo>ingleash/ingleash-docker-repo</remote.repo>
+		<version.dockerfile-maven>1.3.6</version.dockerfile-maven>
 	</properties>
 
 	<dependencies>
@@ -23,17 +24,89 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<!-- here the phase you need -->
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources/docker</directory>
+									<includes>
+										<include>Dockerfile</include>
+										<!-- Below is the content for DockerFile
+										FROM frolvlad/alpine-oraclejdk8:slim
+										MAINTAINER Ashish Ingle <ashishgajmahi@gmail.com>
+										VOLUME /tmp
+										ADD app-starter-docker-deployer-IMAGE_VERSION.jar app.jar
+										RUN sh -c 'touch /app.jar'
+										ENV JAVA_OPTS=""
+										ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
+										 -->
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.3</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<file>${basedir}/target/Dockerfile</file>
+					<replacements>
+						<replacement>
+							<token>IMAGE_VERSION</token>
+							<value>${project.version}</value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>${version.dockerfile-maven}</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+							<!-- Can be triggered with dockerfile:push command. 
+							     Make sure that config.json file is updated with correct credentials-->
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<contextDirectory>${project.build.directory}</contextDirectory>
+					<repository>${remote.repo}</repository>
+					<tag>${project.version}</tag>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
