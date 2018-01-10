@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="1" author="ashish-ingle">
+    <createTable tableName="TEST_TABLE">
+      <column name="id" type="int">
+`      </column>
+      <column name="msd1" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+      <column name="dob" type="DATE">
+        <constraints nullable="false" />
+      </column>
+         <column name="msd2" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+      <column name="msd3" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+         <column name="msd4" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+      <column name="msd5" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+       <column name="flag" type="BOOLEAN">
+      </column>
+    </createTable>
+  </changeSet>
+
+</databaseChangeLog>
