@@ -9,9 +9,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by Kinath on 8/6/2016.
- */
+
 public class SURFDetector {
 
     public static void main(String[] args) {
