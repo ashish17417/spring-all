@@ -1,0 +1,52 @@
+
+
+
+<mat-form-field> <mat-select
+	placeholder="Prototype Signature" (change)="selected($event)">
+<mat-option *ngFor="let originals of originals"
+	[value]="originals.value"
+	(onSelectionChange)="selected($event, originals)"> {{
+originals.viewValue }} </mat-option> </mat-select> </mat-form-field>
+
+<br>
+<label class="btn btn-default"><input type="file"
+	(change)="selectFile($event)"></label>
+
+<button class="btn btn-success" [disabled]="!selectedFiles"
+	(click)="upload()">Upload file / Files to be validated</button>
+
+
+<div *ngIf="currentFileUpload" class="progress">
+	<div class="progress-bar progress-bar-info progress-bar-striped"
+		role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+		aria-valuemin="0" aria-valuemax="100"
+		[ngStyle]="{width:progress.percentage+'%'}">
+		{{progress.percentage}}%</div>
+</div>
+
+<a href="{{fileUpload}}">{{fileUpload}}</a>
+
+
+<BR>
+Raw Results are - {{data}}
+
+
+<script>
+
+</script>
+<!-- <table *ngIf="data" class="table">
+                    <tr>
+                        <th>originalSignature</th>
+                        <th>testSubjectDocument</th>
+                        <th>matched</th> 
+                        <th>matchCount</th>
+                    </tr>
+                    <tr *ngFor="let data of data">
+                        <td>{{data.originalSignature}}</td>
+                        <td>{{data.testSubjectDocument}}</td>
+                        <td>{{data.matched}}</td>
+                        <td>{{data.matchCount}}</td>
+                        
+                    </tr>
+                </table> -->
+
