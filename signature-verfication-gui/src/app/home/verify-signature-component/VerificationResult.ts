@@ -3,4 +3,6 @@ export class VerificationResult {
   testSubjectDocument: string;
   matched: boolean;
   matchCount: any;
+  base64representation: string;
+  ragStatus: string;
 }

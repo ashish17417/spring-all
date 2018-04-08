@@ -33,11 +33,12 @@ export class VerifySignatureComponentComponent implements OnInit {
   public verificationResult: VerificationResult[];
   public selectedOriginal;
   displayedColumns = ['originalSignature', 'testSubjectDocument', 'matched', 'matchCount'];
-  public data: any[];
+  public data: VerificationResult[] = [];
+  public datastr;
   public test = '<h2>ASHISH INGLE</h2>'
   constructor(private verifySignatureServiceService: VerifySignatureServiceService,
     private uploadDocumentsToverfiedServiceService: UploadDocumentsToverfiedServiceService) {}
-
+  public selectedValueByte64;
   ngOnInit() {
     this.verifySignatureServiceService.getData().subscribe(
       res => {
@@ -57,6 +58,7 @@ export class VerifySignatureComponentComponent implements OnInit {
   selected(event: any, originals: Original) {
     if (event.source.selected) {
       this.selectedOriginal = originals.value;
+      this.selectedValueByte64 = originals.viewValue;
       console.log("selected val " + this.selectedOriginal);
     }
   }
@@ -94,14 +96,11 @@ export class VerifySignatureComponentComponent implements OnInit {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
-        
-        let datastr: string = JSON.stringify(event.body);
-        this.data = JSON.parse(datastr);
-        // let res: VerificationResult[] = JSON.parse(data);
-        //this.verificationResult = res;
-        console.log(this.data);
+       this.datastr = event.body;
+        console.log(this.datastr);
+        this.verificationResult = JSON.parse(this.datastr);
       }
-    })
+    });
 
     this.selectedFiles = undefined;
   }

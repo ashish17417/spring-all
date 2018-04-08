@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { VerifySignatureComponentComponent } from './home/verify-signature-component/verify-signature-component.component';
 import { UploadAndValidateComponentComponent } from './home/upload-and-validate-component/upload-and-validate-component.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatFileUploadModule } from 'angular-material-fileupload';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -42,19 +41,22 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
+import { TabsComponentComponent } from './home/tabs-component/tabs-component.component';
+import { UploadOriginalsComponentComponent } from './home/upload-originals-component/upload-originals-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VerifySignatureComponentComponent,
-    UploadAndValidateComponentComponent
+    UploadAndValidateComponentComponent,
+    TabsComponentComponent,
+    UploadOriginalsComponentComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
     MatButtonModule,
-    MatFileUploadModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
   MatButtonModule,

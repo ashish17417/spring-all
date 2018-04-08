@@ -1,0 +1,23 @@
+
+<BR>
+<label class="btn btn-default">Upload Original Signatures for validations</label>
+<label class="btn btn-default"><input type="file"
+	(change)="selectFile($event)"></label>
+
+<button class="btn btn-success" [disabled]="!selectedFiles"
+	(click)="upload()">
+	Upload Original Signature/button</button>
+
+
+	<div *ngIf="currentFileUpload" class="progress">
+		<div class="progress-bar progress-bar-info progress-bar-striped"
+			role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+			aria-valuemin="0" aria-valuemax="100"
+			[ngStyle]="{width:progress.percentage+'%'}">
+			{{progress.percentage}}%</div>
+
+	</div>
+
+	<a href="{{fileUpload}}">{{fileUpload}}</a>
+	
+	<p *ngIf="message">{{message}}</p>

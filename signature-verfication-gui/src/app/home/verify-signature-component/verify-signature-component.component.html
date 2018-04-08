@@ -2,11 +2,10 @@
 
 
 <mat-form-field> <mat-select
-	placeholder="Prototype Signature" (change)="selected($event)">
-<mat-option *ngFor="let originals of originals"
-	[value]="originals.value"
+	placeholder="Prototype Signature"> <mat-option
+	*ngFor="let originals of originals" [value]="originals.value"
 	(onSelectionChange)="selected($event, originals)"> {{
-originals.viewValue }} </mat-option> </mat-select> </mat-form-field>
+originals.value }} </mat-option> </mat-select> </mat-form-field>
 
 <br>
 <label class="btn btn-default"><input type="file"
@@ -26,27 +25,32 @@ originals.viewValue }} </mat-option> </mat-select> </mat-form-field>
 
 <a href="{{fileUpload}}">{{fileUpload}}</a>
 
-
-<BR>
-Raw Results are - {{data}}
-
-
 <script>
 
 </script>
-<!-- <table *ngIf="data" class="table">
-                    <tr>
-                        <th>originalSignature</th>
-                        <th>testSubjectDocument</th>
-                        <th>matched</th> 
-                        <th>matchCount</th>
-                    </tr>
-                    <tr *ngFor="let data of data">
-                        <td>{{data.originalSignature}}</td>
-                        <td>{{data.testSubjectDocument}}</td>
-                        <td>{{data.matched}}</td>
-                        <td>{{data.matchCount}}</td>
-                        
-                    </tr>
-                </table> -->
+<div *ngIf="verificationResult">
+
+<br>
+<label class="btn btn-default">Original Image</label>
+<img src ="{{selectedValueByte64}}"/>
+<br>
+
+<table id="results" class="table table-hover">
+	<tr>
+		<th>testSubjectDocument</th>
+		<th>matched</th>
+		<th>matchCount</th>
+		<th>Validated Signature</th>
+		<th>RAG</th>
+	</tr>
+	<tr *ngFor="let data of verificationResult">
+		<td>{{data.testSubjectDocument}}</td>
+		<td>{{data.matched}}</td>
+		<td>{{data.matchCount}}</td>
+		<td><img height="100" src="{{data.base64representation}}"/></td>
+		<td> <img height="50" width="50" src="../assets/{{data.ragStatus}}.jpg"/></td>
+
+	</tr>
+</table>
+</div>
 
