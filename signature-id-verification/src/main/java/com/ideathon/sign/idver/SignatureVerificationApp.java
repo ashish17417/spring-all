@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AppStarter {
+public class SignatureVerificationApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AppStarter.class);
+		SpringApplication.run(SignatureVerificationApp.class);
 	}
 
 }

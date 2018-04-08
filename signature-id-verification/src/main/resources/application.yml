@@ -1,5 +1,18 @@
 spring:
+  resources:
+    static-locations:
+    - /static
   http:
     multipart:
       max-file-size: 911111128KB
       max-request-size: 911111128KB
+app:
+  properties:
+      storageOriginalDir: ./originals/
+      storageUploadDir: ./upload-dir/files/
+      storageUnzipPath: ./tmp/
+      storageLibsX86: ./libs/x86/
+      storageLibsX64: ./libs/
+      dll: opencv_java2411
+      matchIndexThreshold: 10
+      

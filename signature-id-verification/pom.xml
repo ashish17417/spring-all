@@ -43,7 +43,11 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>signature-verfication-gui</groupId>
+			<artifactId>signature-verfication-gui</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 	</dependencies>
 	<build>
